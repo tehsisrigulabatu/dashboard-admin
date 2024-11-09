@@ -1,3 +1,7 @@
+<?php 
+include 'koneksi.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,27 +71,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <!-- <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td class="">
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailproject"><i class="bi bi-eye-fill"></i></button>
-                                <a href="" class="btn btn-sm btn-success m-1" data-bs-toggle="modal" data-bs-target="#detailproject"><i class="bi bi-check2"></i></a>
-                                <a href="" class="btn btn-sm btn-danger m-1"  data-bs-toggle="modal" data-bs-target="#detailproject"><i class="bi bi-trash3"></i></a>
-                            </td>
+                        <tr>
+                          <?php
+                          include 'koneksi.php';
+                              $query = mysqli_query($connect, "SELECT * FROM project");
+                              while ($project = mysqli_fetch_array($query)) {
+                          ?>
+                          <td> <?php echo $project['nomer'] ?></td>
+                          <td> <?php echo $project['servis'] ?></td>
+                          <td> <?php echo $project['deskripsi'] ?></td>
+                          <td>
+                              <a href="edit.php?id=<?php echo $project['nomer'];?>"><i class="bi bi-pencil-square" ></i></a>
+                              <a href="delete.php?nomer=<?php echo $project['nomer'];?>"onclick="return confirm('You sure want to delete this?')"><i class="bi bi-trash3"></i></a>
+                          </td>
                           </tr>
-                          <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td class="">
-                              <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#detailproject"><i class="bi bi-eye-fill"></i></button>
-                              <a href="" class="btn btn-sm btn-success m-1" data-bs-toggle="modal" data-bs-target="#detailproject"><i class="bi bi-check2"></i></a>
-                              <a href="" class="btn btn-sm btn-danger m-1"  data-bs-toggle="modal" data-bs-target="#detailproject"><i class="bi bi-trash3"></i></a>
-                            </td>
-                          </tr> -->
-                          
+                      </tbody> <?php } ?>
                         </tbody>
                       </table>
                       <div class="modal fade" id="detailproject">
