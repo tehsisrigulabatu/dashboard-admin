@@ -66,8 +66,11 @@ include 'koneksi.php';
                           <tr>
                             <th scope="col">No.</th>
                             <th scope="col">Service Name</th>
-                            <th style="width: 30%;" scope="col">Description</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Action</th>                            
+                            <th scope="col">Status</th>                            
+
                           </tr>
                         </thead>
                         <tbody>
@@ -80,6 +83,8 @@ include 'koneksi.php';
                           <td> <?php echo $project['nomer'] ?></td>
                           <td> <?php echo $project['servis'] ?></td>
                           <td> <?php echo $project['deskripsi'] ?></td>
+                          <td> <?php echo $project['date'] ?></td>
+                          <td> <?php echo $project['status'] ?></td>
                           <td>
                               <a href="edit.php?id=<?php echo $project['nomer'];?>"><i class="bi bi-pencil-square" ></i></a>
                               <a href="delete.php?nomer=<?php echo $project['nomer'];?>"onclick="return confirm('You sure want to delete this?')"><i class="bi bi-trash3"></i></a>
@@ -125,20 +130,27 @@ include 'koneksi.php';
                         <label class="form-label" for="">project name</label>
                         <input class="form-control" type="text" name="servis" id="servis" required > 
                         <label class="form-label" for="">project date</label>
-                        <input class="form-control" type="date">
+                        <input class="form-control" type="date" name="date" id="date" required>
                         <label class="form-label" for="">project picture</label>
                         <input class="form-control" type="file">
                         <label class="form-label" for="">description</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi"></textarea>
                         <label class="form-label" for="">project status</label>
-                        <div class="form-check">
-                          <input name="status" class="form-check-input" type="radio">
-                          <label class="form-check-label" for="">on going</label>
+                        <!-- <div class="form-check">
+                          <input name="status" id="status" class="form-check-input" type="radio">
+                          <label class="form-check-label" for="">progress</label>
                         </div>
                         <div class="form-check">
-                          <input name="status" class="form-check-input" type="radio">
+                          <input name="status" id="status" class="form-check-input" type="radio">
                           <label class="form-check-label" for="">finished</label>
-                        </div>
+                        </div> -->
+                        <br>
+                        <label for="status"></label>
+                        <select name="status" id="status">
+                            <option value="progress">progress</option>
+                            <option value="finished">finished</option>
+                        </select>
+                        <br>
                         <br>
                         <input class="btn btn-success" type="submit" value="simpan">
                         <input class="btn btn-danger" type="submit" value="cancel">

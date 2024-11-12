@@ -21,6 +21,8 @@ include 'koneksi.php';
         <input type="hidden" name="nomer" value="<?php echo $project['nomer'];?>">
         <input type="text" name="servis" value="<?php echo $project['servis'];?>">
         <input type="text" name="deskripsi" value="<?php echo $project['deskripsi'];?>">
+        <input type="text" name="date" value="<?php echo $project['date'];?>">
+        <input type="text" name="status" value="<?php echo $project['status'];?>">
         <button type="submit" name="update">update</button>
     </form> <?php } ?>
 </body>
