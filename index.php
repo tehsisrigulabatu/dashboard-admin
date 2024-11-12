@@ -68,8 +68,8 @@ include 'koneksi.php';
                             <th scope="col">Service Name</th>
                             <th scope="col">Date</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Action</th>                            
                             <th scope="col">Status</th>                            
+                            <th scope="col">Action</th>                            
 
                           </tr>
                         </thead>
