@@ -66,8 +66,8 @@ include 'koneksi.php';
                           <tr>
                             <th scope="col">No.</th>
                             <th scope="col">Service Name</th>
-                            <th scope="col">Date</th>
                             <th scope="col">Description</th>
+                            <th style="width: 15%;" scope="col">Date</th>
                             <th scope="col">Status</th>                            
                             <th scope="col">Action</th>                            
 
@@ -77,10 +77,11 @@ include 'koneksi.php';
                         <tr>
                           <?php
                           include 'koneksi.php';
+                          $x=1;
                               $query = mysqli_query($connect, "SELECT * FROM project");
                               while ($project = mysqli_fetch_array($query)) {
                           ?>
-                          <td> <?php echo $project['nomer'] ?></td>
+                          <td> <?php echo $x++ ?></td>
                           <td> <?php echo $project['servis'] ?></td>
                           <td> <?php echo $project['deskripsi'] ?></td>
                           <td> <?php echo $project['date'] ?></td>
@@ -136,14 +137,6 @@ include 'koneksi.php';
                         <label class="form-label" for="">description</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi"></textarea>
                         <label class="form-label" for="">project status</label>
-                        <!-- <div class="form-check">
-                          <input name="status" id="status" class="form-check-input" type="radio">
-                          <label class="form-check-label" for="">progress</label>
-                        </div>
-                        <div class="form-check">
-                          <input name="status" id="status" class="form-check-input" type="radio">
-                          <label class="form-check-label" for="">finished</label>
-                        </div> -->
                         <br>
                         <label for="status"></label>
                         <select name="status" id="status">
@@ -153,7 +146,7 @@ include 'koneksi.php';
                         <br>
                         <br>
                         <input class="btn btn-success" type="submit" value="simpan">
-                        <input class="btn btn-danger" type="submit" value="cancel">
+                        <input class="btn btn-danger" type="reset" value="cancel">
                       </form>
                     </div>
                   </div>

@@ -9,8 +9,10 @@ $status = $_POST['status'];
 
 $query = mysqli_query($connect, "UPDATE project SET servis='$servis', deskripsi='$deskripsi', date='$date', status='$status' WHERE nomer='$no'");
 if ($query) {
-    echo "<div style='text-align:center;'>data berhasil diupdate<div/>";
+    // echo "<div style='text-align:center;'>data berhasil diupdate<div/>";
+    header("location: index.php");
 } else {
-    echo "<div style='text-align:center;'>data berhasil diupdate<div/>";
+    // echo "<div style='text-align:center;'>data berhasil diupdate<div/>";
+    echo "gagal";
 }
 ?>
