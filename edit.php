@@ -24,22 +24,27 @@ include 'koneksi.php';
                       <h6>form update</h6>
                     </div>
                     <div class="card-body">
-                      <form action="update.php" method="POST">
+                      <form action="update.php" method="POST" enctype="multipart/form-data">
                       <input type="hidden" name="nomer" value="<?php echo $project['nomer'];?>">
                         <label class="form-label" for="servis">project name</label>
                         <input class="form-control" type="text" name="servis" id="servis" value="<?php echo $project['servis'];?>" required > 
                         <label class="form-label" for="date">project date</label>
                         <input class="form-control" type="date" name="date" id="date" value="<?php echo $project['date'];?>" required>
                         <label class="form-label" for="">project picture</label>
-                        <input class="form-control" type="file">
+                        <div>
+                        <img id="output_image" src="./gambar/<?php echo $project['foto']; ?>" alt="Current Image" width="15%">
+                          <input class="form-control" type="file" name="foto" accept="image/*" onchange="preview_image(event)">
+                          <br>
+                          <img id="output_image" width="15%">
+                        </div>
                         <label class="form-label" for="deskripsi">description</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi"><?php echo $project['deskripsi']; ?></textarea>
                         <label class="form-label" for="status">project status</label>
                         <br>
                         <label for="status"></label>
                         <select name="status" id="status">
-                            <option value="progress"><?php echo $project['status'] == 'progress' ? 'selected' : ''; ?>>progress</option></option>
-                            <option value="finished"><?php echo $project['status'] == 'finished' ? 'selected' : ''; ?>>finished</option></option>
+                            <option value="progress"><?php echo $project['status'] == 'progress' ? 'selected' : ''; ?>>progress</option>
+                            <option value="finished"><?php echo $project['status'] == 'finished' ? 'selected' : ''; ?>>finished</option>
                         </select>
                         <br>
                         <br>
@@ -51,6 +56,16 @@ include 'koneksi.php';
 
      <?php } ?>
 
+  <script type="text/javascript">
+    function preview_image(event) {
+      var reader = new FileReader();
+      reader.onload = function() {
+        var output = document.getElementById('output_image');
+        output.src = reader.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
                 
 </body>
 </html>
